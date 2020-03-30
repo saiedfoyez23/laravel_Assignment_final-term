@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Pizza order page
+                    {{$resorse}}
                 </div>
 
                 <div class="links">

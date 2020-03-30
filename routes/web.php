@@ -22,7 +22,7 @@ Route::get('/home',function(){
 });
 
 route::get('/pizza',function(){
-    return view('pizza');
+    return view('pizza',['resorse' => 'Welcome To Pizza Ordering Site']);
 });
 
 Route::prefix('home')->group(function(){
