@@ -18,18 +18,35 @@ Route::get('/', function () {
 });
 
 Route::get('/home',function(){
-    echo " Hi! saied ahammed Foyez this is your home";
+    return view('home.index');
 });
 
-Route::get('/news',function(){
-    echo "This is our news protal";
+route::get('/pizza',function(){
+    return view('pizza');
 });
 
-Route::get('/contact',function(){
-    echo "view all contact in our protal";
+Route::prefix('home')->group(function(){
+    Route::get('/news',function(){
+        echo "This is our news protal";
+    });
+    
+    Route::get('/contact',function(){
+        echo "view all contact in our protal";
+    });
+    
+    Route::get('/order',function(){
+        echo "<h1>Place some order in here </h1>";
+    });
 });
-
-Route::get('/order',function(){
-    echo "<h1>Place some order in here </h1>";
+Route::prefix('pizza')->group(function(){
+    Route::get('/bigpizza',function(){
+        echo "<h1>please order a big pizza</h1>";
+    });
+    Route::get('/medumpizza',function(){
+        echo"<h1> please order a midum pizza </h1>";
+    });
+    Route::get('/smallpizza',function(){
+        echo"<h1> please order a small pizza </h1>";
+    });
 });
 //match('get','post')
