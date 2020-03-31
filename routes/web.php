@@ -31,7 +31,7 @@ Route::prefix('home')->group(function(){
     });
     
     Route::get('/contact',function(){
-        echo "view all contact in our protal";
+        return view('home.contact',['contact'=>'This is our contact page']);
     });
     
     Route::get('/order',function(){
