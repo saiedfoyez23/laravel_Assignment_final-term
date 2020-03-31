@@ -18,12 +18,14 @@ Route::get('/', function () {
 });
 
 Route::get('/home',function(){
-    return view('home.index');
+    return view('home/index');
 });
 
-route::get('/pizza',function(){
+Route::get('/pizza',function(){
     return view('pizza',['resorse' => 'Welcome To Pizza Ordering Site']);
 });
+
+
 
 Route::prefix('home')->group(function(){
     Route::get('/news',function(){
@@ -31,22 +33,27 @@ Route::prefix('home')->group(function(){
     });
     
     Route::get('/contact',function(){
-        return view('home.contact',['contact'=>'This is our contact page']);
-    });
+        return view('home/contact',['contact'=>'This is our contact page']);
+    })->middleware('age');
     
     Route::get('/order',function(){
         echo "<h1>Place some order in here </h1>";
     });
 });
+
 Route::prefix('pizza')->group(function(){
-    Route::get('/bigpizza',function(){
-        echo "<h1>please order a big pizza</h1>";
-    });
-    Route::get('/medumpizza',function(){
-        echo"<h1> please order a midum pizza </h1>";
-    });
-    Route::get('/smallpizza',function(){
-        echo"<h1> please order a small pizza </h1>";
+    Route::group(['middleware' => ['age']], function () {
+        Route::get('/bigpizza',function(){
+            echo "<h1>please order a big pizza</h1>";
+        });
+        Route::get('/medumpizza',function(){
+            echo"<h1> please order a midum pizza </h1>";
+        });
+        Route::get('/smallpizza',function(){
+            echo"<h1> please order a small pizza </h1>";
+        });
     });
 });
+
+
 //match('get','post')
