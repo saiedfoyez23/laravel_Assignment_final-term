@@ -29,10 +29,10 @@ Route::get('/pizza',function(){
 
 Route::prefix('home')->group(function(){
     Route::group(['middleware' => ['verify']],function(){
-        Route::get('/news',function(){
-            return view('home/news',['news'=>'This is Our New Portal']);
-        });
-        
+        //Route::get('/news',function(){
+        //    return view('home/news',['news'=>'This is Our New Portal']);
+        //});
+        Route::get('/news','HellowController@verification');
         Route::get('/contact',function(){
             return view('home/contact',['contact'=>'This is our contact page']);
         });
