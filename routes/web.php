@@ -29,17 +29,8 @@ Route::get('/pizza',function(){
 
 Route::prefix('home')->group(function(){
     Route::group(['middleware' => ['verify']],function(){
-        //Route::get('/news',function(){
-        //    return view('home/news',['news'=>'This is Our New Portal']);
-        //});
         Route::get('/news','HellowController@verification');
-        //Route::get('/contact',function(){
-          //  return view('home/contact',['contact'=>'This is our contact page']);
-        //});
         Route::get('/contact','HellowController@validation');
-        //Route::get('/order',function(){
-          //  return view('home/order',['orders'=>'This is our Order page']);
-        //});
         Route::get('/order','NameController@home');
 
     });
@@ -47,16 +38,10 @@ Route::prefix('home')->group(function(){
 
 
 Route::prefix('pizza')->group(function(){
-    Route::group(['middleware' => ['age']], function () {
-        Route::get('/bigpizza',function(){
-            echo "<h1>please order a big pizza</h1>";
-        });
-        Route::get('/medumpizza',function(){
-            echo"<h1> please order a midum pizza </h1>";
-        });
-        Route::get('/smallpizza',function(){
-            echo"<h1> please order a small pizza </h1>";
-        });
+    Route::group(['middleware' => ['pizza']], function () {
+        Route::get('/bigpizza','PizzaController@bigpizza');
+        Route::get('/medumpizza','PizzaController@midumpizza');
+        Route::get('/smallpizza','PizzaController@smallpizza');
     });
 });
 

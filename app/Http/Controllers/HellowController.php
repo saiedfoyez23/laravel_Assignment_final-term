@@ -8,10 +8,10 @@ class HellowController extends Controller
 {
     public function verification()
     {
-        echo "this is our news protal";
+        return view('home/news',['news'=>'This is Our New Portal']);
     }
     public function validation()
     {
-        echo "this is my validation function()";
+        return view('home/contact',['contact'=>'This is our contact page']);
     }
 }

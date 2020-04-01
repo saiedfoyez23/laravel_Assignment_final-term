@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'name' =>  \App\Http\Middleware\NameMiddleware::class,
         'age' => \App\Http\Middleware\AgeMiddleware::class,
         'verify' => \App\Http\Middleware\VerifyMiddleware::class,
+        'pizza' => \App\Http\Middleware\PizzaMiddleware::class,
 
     ];
 }
