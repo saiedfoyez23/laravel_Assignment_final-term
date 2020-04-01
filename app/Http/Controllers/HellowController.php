@@ -10,4 +10,8 @@ class HellowController extends Controller
     {
         echo "this is our news protal";
     }
+    public function validation()
+    {
+        echo "this is my validation function()";
+    }
 }

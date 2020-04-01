@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/home',function(){
-    return view('home/index');
+   return view('home/index');
 });
+
 
 Route::get('/pizza',function(){
     return view('pizza',['resorse' => 'Welcome To Pizza Ordering Site']);
@@ -33,13 +33,14 @@ Route::prefix('home')->group(function(){
         //    return view('home/news',['news'=>'This is Our New Portal']);
         //});
         Route::get('/news','HellowController@verification');
-        Route::get('/contact',function(){
-            return view('home/contact',['contact'=>'This is our contact page']);
-        });
-        
-        Route::get('/order',function(){
-            return view('home/order',['orders'=>'This is our Order page']);
-        });
+        //Route::get('/contact',function(){
+          //  return view('home/contact',['contact'=>'This is our contact page']);
+        //});
+        Route::get('/contact','HellowController@validation');
+        //Route::get('/order',function(){
+          //  return view('home/order',['orders'=>'This is our Order page']);
+        //});
+        Route::get('/order','NameController@home');
 
     });
 });
