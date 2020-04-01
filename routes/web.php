@@ -21,9 +21,7 @@ Route::get('/home',function(){
 });
 
 
-Route::get('/pizza',function(){
-    return view('pizza',['resorse' => 'Welcome To Pizza Ordering Site']);
-});
+Route::get('/pizza','PizzaController@pizza');
 
 
 

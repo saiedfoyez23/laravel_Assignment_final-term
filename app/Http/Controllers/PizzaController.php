@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class PizzaController extends Controller
 {
+    public function pizza()
+    {
+        return view('pizza',['resorse' => 'Welcome To Pizza Ordering Site']);
+
+    }
     public function bigpizza()
     {
         echo "<h1>This is our Big Pizza Ordering Site</h1>";
