@@ -28,18 +28,22 @@ Route::get('/pizza',function(){
 
 
 Route::prefix('home')->group(function(){
-    Route::get('/news',function(){
-        echo "This is our news protal";
-    });
-    
-    Route::get('/contact',function(){
-        return view('home/contact',['contact'=>'This is our contact page']);
-    })->middleware('age');
-    
-    Route::get('/order',function(){
-        echo "<h1>Place some order in here </h1>";
+    Route::group(['middleware' => ['verify']],function(){
+        Route::get('/news',function(){
+            return view('home/news',['news'=>'This is Our New Portal']);
+        });
+        
+        Route::get('/contact',function(){
+            return view('home/contact',['contact'=>'This is our contact page']);
+        });
+        
+        Route::get('/order',function(){
+            return view('home/order',['orders'=>'This is our Order page']);
+        });
+
     });
 });
+
 
 Route::prefix('pizza')->group(function(){
     Route::group(['middleware' => ['age']], function () {
