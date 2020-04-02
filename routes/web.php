@@ -18,18 +18,18 @@ Route::get('/', function () {
 });
 Route::get('/home',function(){
    return view('home/index');
-});
+})->name('blogs');
 
 
-Route::get('/pizza','PizzaController@pizza');
+Route::get('/pizza','PizzaController@pizza')->name('pizza');
 
+Route::get('/news','HellowController@verification')->name('news');
+Route::get('/contact','HellowController@validation')->name('contact');
 
-
-Route::prefix('home')->group(function(){
+Route::prefix('home.')->group(function(){
     Route::group(['middleware' => ['verify']],function(){
-        Route::get('/news','HellowController@verification');
-        Route::get('/contact','HellowController@validation');
-        Route::get('/order','NameController@home');
+        
+        
 
     });
 });
