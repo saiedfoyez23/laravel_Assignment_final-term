@@ -80,16 +80,14 @@
             @endif
 
             <div class="content">
+               @extends('welcome')
                 <div class="title m-b-md">
                     {{$contact}}
                 </div>
 
                 <div class="links">
                     <a href="{{ URL::to('/') }}">Home</a>
-                    <a href="{{ route('contact')}}">Contact</a>
-                    <a href="{{route('news')}}">News</a>
-                    <a href="{{route('blogs')}}">Blog</a>
-                    <a href="{{route('pizza')}}">Pizza</a>
+                    
                 </div>
             </div>
         </div>
