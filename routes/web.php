@@ -22,14 +22,18 @@ Route::get('/home',function(){
 
 
 Route::get('/pizza','PizzaController@pizza')->name('pizza');
-
 Route::get('/news','HellowController@verification')->name('news');
 Route::get('/contact','HellowController@validation')->name('contact');
+Route::get('/order','NameController@home')->name('order');
+Route::get('/bigpizza','PizzaController@bigpizza')->name('bigpizza');
+Route::get('/medumpizza','PizzaController@midumpizza')->name('midumpizza');
+Route::get('/smallpizza','PizzaController@smallpizza')->name('smallpizza');
 
-Route::prefix('home.')->group(function(){
+Route::prefix('home')->group(function(){
     Route::group(['middleware' => ['verify']],function(){
         
-        
+    
+ 
 
     });
 });
@@ -37,9 +41,7 @@ Route::prefix('home.')->group(function(){
 
 Route::prefix('pizza')->group(function(){
     Route::group(['middleware' => ['pizza']], function () {
-        Route::get('/bigpizza','PizzaController@bigpizza');
-        Route::get('/medumpizza','PizzaController@midumpizza');
-        Route::get('/smallpizza','PizzaController@smallpizza');
+        
     });
 });
 
