@@ -53,7 +53,7 @@
   </nav>
 
   <!-- Page Header -->
-<header class="masthead" style="background-image: url({{asset('/fontend/img/home-bg.jpg')}}">
+<header class="masthead" style="background-image: url({{asset('fontend/img/home-bg.jpg')}}">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -116,7 +116,7 @@
   <script src="{{asset('fontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="{{asset('js/clean-blog.min.js')}}"></script>
+  <script src="{{asset('fontend/js/clean-blog.min.js')}}"></script>
 
 </body>
 
