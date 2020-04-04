@@ -8,6 +8,6 @@ class NameController extends Controller
 {
     public function home()
     {
-        return view('home/order',['orders'=>'This is our Order page']);
+        return view('home/post',['post'=>'Please Write some Post Here']);
     }
 }

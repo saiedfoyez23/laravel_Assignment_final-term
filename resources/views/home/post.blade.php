@@ -1,3 +1,4 @@
+
 @extends('welcome')
 @section('contain')
         <div class="flex-center position-ref full-height">
@@ -18,7 +19,7 @@
             <div class="content">
 
                 <div class="title m-b-md">
-                    {{$news}}
+                    {{$post}}
                 </div>
 
                 <div class="links">

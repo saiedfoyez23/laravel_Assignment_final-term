@@ -15,9 +15,8 @@
                 </div>
             @endif
             <div class="content">
-                @extends('welcome')
                 <div class="title m-b-md">
-                    {{$orders}}
+                    {{$about}}
                 </div>
 
                 <div class="links">

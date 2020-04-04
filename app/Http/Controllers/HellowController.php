@@ -8,7 +8,7 @@ class HellowController extends Controller
 {
     public function verification()
     {
-        return view('home/news',['news'=>'This is Our New Portal']);
+        return view('home/about',['about'=>'This is Our about Page']);
     }
     public function validation()
     {

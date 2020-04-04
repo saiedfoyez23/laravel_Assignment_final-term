@@ -22,9 +22,9 @@ Route::get('/home',function(){
 
 
 Route::get('/pizza','PizzaController@pizza')->name('pizza');
-Route::get('/news','HellowController@verification')->name('news');
+Route::get('/about','HellowController@verification')->name('about');
 Route::get('/contact','HellowController@validation')->name('contact');
-Route::get('/order','NameController@home')->name('order');
+Route::get('/post','NameController@home')->name('post');
 Route::get('/bigpizza','PizzaController@bigpizza')->name('bigpizza');
 Route::get('/medumpizza','PizzaController@midumpizza')->name('midumpizza');
 Route::get('/smallpizza','PizzaController@smallpizza')->name('smallpizza');
