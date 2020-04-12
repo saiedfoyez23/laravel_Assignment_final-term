@@ -16,6 +16,7 @@
   <!-- Custom fonts for this template -->
   <link href="{{asset('fontend/vendor/fontawesome-free/css/all.min.css')}} rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
@@ -39,10 +40,10 @@
             <a class="nav-link" href="{{route('blogs')}}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('about')}}">About</a>
+            <a class="nav-link" href="{{route('about')}}"></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('post')}}">Write post</a>
+            <a class="nav-link" href="{{route('buses')}}">buses</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('contact')}}">Contact</a>
@@ -117,7 +118,75 @@
 
   <!-- Custom scripts for this template -->
   <script src="{{asset('fontend/js/clean-blog.min.js')}}"></script>
+  <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script>
 
+  @if(Session::has('messege'))
+  var type="{{Session::get('alert-type','info')}}"
+  switch(type){
+  case 'info':
+    toastr.info(" {{Session::get('messege')}} ");
+    break;
+  case 'success':
+    toastr.success(" {{Session::get('messege')}}" );
+    break;
+  case 'warning':
+    toastr.warning("{{Session::get('messege')}}");
+    break;
+  case 'error':
+    toastr.error("{{Session::get('messege')}}");
+    break;
+  }
+  @endif
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" type="text/javascript">  </script>
+  
+  <script>
+    $document.on("click","#delete",function(e){
+      e.preventDefault();
+      var link=$(this).attr("href");
+      Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+      )};
+      .then((willDelete) => {
+         if (willDelete) {
+           window.location.href = link;
+         }
+         else{
+          Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success');
+         }
+
+    )
+  };
+});
+
+    });
+    Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.value) {
+    Swal.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  }
+})
+  </script>
 </body>
 
 </html>

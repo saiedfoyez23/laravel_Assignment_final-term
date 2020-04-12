@@ -24,10 +24,16 @@ Route::get('/home',function(){
 Route::get('/pizza','PizzaController@pizza')->name('pizza');
 Route::get('/about','HellowController@verification')->name('about');
 Route::get('/contact','HellowController@validation')->name('contact');
-Route::get('/post','NameController@home')->name('post');
-Route::get('/bigpizza','PizzaController@bigpizza')->name('bigpizza');
-Route::get('/medumpizza','PizzaController@midumpizza')->name('midumpizza');
-Route::get('/smallpizza','PizzaController@smallpizza')->name('smallpizza');
+
+Route::get('/bus','NameController@home')->name('buses');
+Route::post('/bus','NameController@insert')->name('buses');
+
+Route::get('/edit_bus/{id}','NameController@edit');
+Route::post('/edit_bus/{id}','NameController@edit_bus');
+
+Route::get('/delete_bus/{id}','NameController@delete');
+Route::get('/view','NameController@view')->name('view');
+Route::post('/view','NameController@view')->name('view');
 
 Route::prefix('home')->group(function(){
     Route::group(['middleware' => ['verify']],function(){
