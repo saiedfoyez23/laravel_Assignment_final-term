@@ -75,7 +75,7 @@ class NameController extends Controller
         if($buses)
         {
             $notification= array(
-                'messege'=>'Successfully buses update',
+                'messege'=>'Successfully bus information is updated',
                 'alert-type'=>'info'
             );
             return Redirect()->back()->with($notification);
@@ -94,7 +94,7 @@ class NameController extends Controller
     {
         $buses=DB::table('buses')->where('id',$id)->delete();
         $notification= array(
-            'messege'=>'Successfully buses delete',
+            'messege'=>'The bus information is deleted',
             'alert-type'=>'warning'
         );
         return Redirect()->back()->with($notification);
