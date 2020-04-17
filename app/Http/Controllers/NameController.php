@@ -30,19 +30,17 @@ class NameController extends Controller
         $buses=DB::table('buses')->insert($data);
         if($buses)
         {
-            $notification= array(
-                'messege'=>'Successfully buses inserted',
-                'alert-type'=>'sussess'
-            );
-            return Redirect()->back()->with($notification);
+            $request->session()->flash('messege','Successfully buses inserted');
+            $request->session()->flash('alert-type','success');
+            
+            return Redirect()->route('view');
         }
         else
         {
-            $notification= array(
-                'messege'=>'Something wrong with db connection',
-                'alert-type'=>'error'
-            );
-            return Redirect()->back()->with($notification);
+
+            $request->session()->flash('messege','Something wrong with db connection');
+            $request->session()->flash('alert-type','error');
+            return Redirect()->route('buses');
         }
 
     }
@@ -78,7 +76,7 @@ class NameController extends Controller
         {
             $notification= array(
                 'messege'=>'Successfully buses update',
-                'alert-type'=>'sussess'
+                'alert-type'=>'info'
             );
             return Redirect()->back()->with($notification);
         }
@@ -96,8 +94,8 @@ class NameController extends Controller
     {
         $buses=DB::table('buses')->where('id',$id)->delete();
         $notification= array(
-            'messege'=>'Successfully buses inserted',
-            'alert-type'=>'sussess'
+            'messege'=>'Successfully buses delete',
+            'alert-type'=>'warning'
         );
         return Redirect()->back()->with($notification);
         

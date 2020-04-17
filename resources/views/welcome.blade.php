@@ -12,16 +12,19 @@
 
   <!-- Bootstrap core CSS -->
   <link href="{{asset('fontend/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="{{asset('fontend/vendor/fontawesome-free/css/all.min.css')}} rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+ 
+  
 
   <!-- Custom styles for this template -->
   <link href="{{asset('fontend/css/clean-blog.min.css')}}" rel="stylesheet">
-
 </head>
 
 <body>
@@ -111,82 +114,61 @@
       </div>
     </div>
   </footer>
-
   <!-- Bootstrap core JavaScript -->
   <script src="{{asset('fontend/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('fontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Custom scripts for this template -->
   <script src="{{asset('fontend/js/clean-blog.min.js')}}"></script>
-  <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-  <script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
 
-  @if(Session::has('messege'))
-  var type="{{Session::get('alert-type','info')}}"
-  switch(type){
-  case 'info':
-    toastr.info(" {{Session::get('messege')}} ");
-    break;
-  case 'success':
-    toastr.success(" {{Session::get('messege')}}" );
-    break;
-  case 'warning':
-    toastr.warning("{{Session::get('messege')}}");
-    break;
-  case 'error':
-    toastr.error("{{Session::get('messege')}}");
-    break;
-  }
-  @endif
-
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" type="text/javascript">  </script>
-  
   <script>
-    $document.on("click","#delete",function(e){
-      e.preventDefault();
-      var link=$(this).attr("href");
-      Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-      )};
-      .then((willDelete) => {
+  $(document).on('click','#delete',function(e){
+    e.preventDefault();
+    var link = $(this).attr('href');
+    swal({
+       title: "Are you sure?",
+       text: "To delete the data",
+       icon: "warning",
+       buttons: true,
+       dangerMode: true,
+    })
+     .then((willDelete) => {
          if (willDelete) {
-           window.location.href = link;
-         }
-         else{
-          Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success');
-         }
+         window.location.href = link;
+      } else {
+         swal("Safe data!!");
+     }
+  });
 
-    )
-  };
 });
+</script>
 
-    });
-    Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
-}).then((result) => {
-  if (result.value) {
-    Swal.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
-  }
-})
-  </script>
+<script>
+@if(Session::has('messege'))
+    var type = '{{ Session::get('alert-type')}}';
+    switch(type){
+        case 'info':
+            toastr.info('{{ Session::get('messege') }}');
+            break;
+
+        case 'warning':
+            toastr.warning('{{ Session::get('messege') }}');
+            break;
+
+        case 'success':
+            toastr.success('{{ Session::get('messege') }}');
+            break;
+
+        case 'error':
+            toastr.error('{{ Session::get('message') }}');
+            break;
+    }
+  @endif
+</script>
+
 </body>
 
 </html>

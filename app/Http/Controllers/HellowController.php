@@ -10,8 +10,9 @@ class HellowController extends Controller
     {
         return view('home/about',['about'=>'This is Our about Page']);
     }
-    public function validation()
+    public function validation(Request $request)
     {
-        return view('home/contact',['contact'=>'This is our contact page']);
+        $request->session()->flash('contact','This is our contact page');
+        return view('home/contact');
     }
 }

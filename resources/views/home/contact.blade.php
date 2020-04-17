@@ -18,7 +18,7 @@
             <div class="content">
 
                 <div class="title m-b-md">
-                    {{$contact}}
+                    {{Session::get('contact')}}
                 </div>
 
                 <div class="links">

@@ -5,6 +5,10 @@
     <div class="row">
         <a href="{{route('view')}}" class="btn btn-info">View-buses</a>
     </div>
+
+    <div class="title m-b-md">
+    
+    </div>
     <br>
     <br>
     <div> 
